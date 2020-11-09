@@ -8,7 +8,6 @@ import org.openqa.selenium.Keys;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.serenitybdd.screenplay.actions.SendKeys;
 import net.thucydides.core.annotations.At;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.annotations.WhenPageOpens;
@@ -28,9 +27,7 @@ public class ToDoMVCHomePage extends PageObject {
 	By todoCompleteList = By.xpath("//li[@class='todo completed']//label");
 
 	public void add_reminder(String reminder) {
-		SendKeys.of(reminder, Keys.RETURN).into(todoInputBox);
-//		typeInto(todoInputBox, reminder);
-//		enter(Keys.RETURN).into(todoInputBox);
+		todoInputBox.sendKeys(reminder + Keys.RETURN);
 	}
 
 	public List<String> get_todo_reminders() {
